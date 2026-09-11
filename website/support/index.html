@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Shopping Companion for Homey support and setup guide.">
+  <title>Shopping Companion Support</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="badge">Shopping Companion · Support</div>
+      <h1>Setup & support</h1>
+      <p class="lead">Everything you need to get Shopping Companion running on your own Homey Pro.</p>
+      <div class="actions">
+        <a class="primary" href="../">Back to Shopping Companion</a>
+        <a href="#amazon-live-data">Amazon live data</a>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>Start here</h2>
+      <p><strong>You do not need an Amazon API account to use Shopping Companion.</strong>
+      Shopping lists, manual product links, parcel data and Homey Flows work without Amazon Creators API.</p>
+    </section>
+    <section class="flows">
+      <h2>Basic setup</h2>
+      <div class="flowbox">
+        <span>1. Install Shopping Companion on Homey Pro.</span>
+        <span>2. Open the app settings.</span>
+        <span>3. Select your Amazon marketplace/country.</span>
+        <span>4. Save. You can now use lists, parcel events and Homey Flows.</span>
+      </div>
+    </section>
+
+    <section id="amazon-live-data" class="flows">
+      <h2>Optional: Amazon live product data</h2>
+      <p>Live search, current price and stock data require your own Amazon Associates account and Creators API access.</p>
+      <div class="flowbox">
+        <span>1. Create an Amazon Associates account for your marketplace.</span>
+        <span>2. Add your website/app and complete the Associates profile.</span>
+        <span>3. Save the Partner Tag / Store ID Amazon gives you.</span>
+        <span>4. Wait until the Associates account is approved.</span>
+        <span>5. Amazon currently requires at least 10 qualifying sales in the last 30 days for Product Advertising API access through Creators API.</span>
+        <span>6. Open Associates Central → Tools → Creators API.</span>
+        <span>7. Create an application and generate credentials.</span>
+        <span>8. Copy Credential ID and Credential Secret into Shopping Companion on Homey.</span>
+        <span>9. Enable live data and press “Save & test Amazon connection”.</span>
+      </div>
+    </section>
+    <section class="grid">
+      <article>
+        <h2>I only have a Partner Tag</h2>
+        <p>That is normal for a new Associates account. Save the Partner Tag in Homey, leave live data disabled and continue using the basic features.</p>
+      </article>
+      <article>
+        <h2>I cannot create API credentials</h2>
+        <p>Your Associates account is probably not eligible yet. Check the Creators API page in Associates Central. Requirements are controlled by Amazon and may change.</p>
+      </article>
+      <article>
+        <h2>Which Credential Version?</h2>
+        <p>Use the version shown for your region in Shopping Companion. For Sweden and most European marketplaces this is currently 3.2.</p>
+      </article>
+      <article>
+        <h2>Multiple countries</h2>
+        <p>Partner Tags are marketplace-specific. Configure the correct tag for each Amazon marketplace you use.</p>
+      </article>
+      <article>
+        <h2>Where are credentials stored?</h2>
+        <p>On your own Homey. Shopping Companion does not send your Creators API credentials to Creson.</p>
+      </article>
+      <article>
+        <h2>Can the app buy anything?</h2>
+        <p>No. Shopping Companion has no checkout, cart, payment, address-change or order-placement capability.</p>
+      </article>
+    </section>
+    <section class="warning">
+      <h2>Important security note</h2>
+      <p>Never enter your normal Amazon shopping password in Shopping Companion. Credential Secret is a separate Creators API credential. Shopping Companion never stores an authenticated Amazon browser session.</p>
+    </section>
+
+    <section class="flows">
+      <h2>Official Amazon documentation</h2>
+      <p><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/onboarding" target="_blank" rel="noreferrer">Amazon Creators API onboarding</a></p>
+      <p>Amazon controls eligibility and can change its program requirements. If Associates Central shows different requirements, follow Amazon's current information.</p>
+    </section>
+
+    <footer>
+      <p>Independent community project by Creson. Not affiliated with or endorsed by Amazon.</p>
+      <p><a href="https://github.com/CuddleFish34/homey-shopping-companion">Source code</a> · <a href="../">Shopping Companion</a></p>
+    </footer>
+  </main>
+</body>
+</html>

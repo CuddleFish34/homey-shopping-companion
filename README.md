@@ -107,13 +107,17 @@ Partner Tags are marketplace-specific.
 is the backend for their shopping lists, product observations and parcel data.
 The public Creson website is documentation only.
 
-## Website
+## Website & support
 
-Public documentation is planned for:
+Public project page:
 
-**https://apps.creson.com/ShoppingCompanion**
+**https://apps.creson.com/ShoppingCompanion/**
 
-The initial static source lives in `website/`.
+Step-by-step setup and troubleshooting:
+
+**https://apps.creson.com/ShoppingCompanion/support/**
+
+The static source lives in `website/`.
 
 ## Development
 

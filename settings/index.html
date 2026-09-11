@@ -43,28 +43,48 @@
   </fieldset>
 
   <fieldset class="homey-form-fieldset">
-    <legend class="homey-form-legend">2. Optional: Amazon live product data</legend>
-    <label class="homey-form-checkbox">
-      <input id="liveEnabled" type="checkbox">
-      <span>Enable direct price, stock and product lookup from this Homey</span>
-    </label>
+    <legend class="homey-form-legend">2. Amazon Associates & live product data</legend>
+
+    <div style="padding:14px;border:1px solid #d9dde3;border-radius:10px;margin-bottom:16px;">
+      <strong>Start here — live Amazon data is optional.</strong>
+      <ol>
+        <li>Create an Amazon Associates account for the marketplace you use.</li>
+        <li>Add your website/app and complete the Associates profile.</li>
+        <li>Amazon gives you a marketplace-specific <strong>Partner Tag / Store ID</strong>. You can save it below immediately.</li>
+        <li>Your Associates account must become <strong>Approved</strong> before Creators API access is available.</li>
+        <li>For Product Advertising API access through Creators API, Amazon currently requires at least <strong>10 qualifying sales in the last 30 days</strong>.</li>
+        <li>When eligible: open <strong>Associates Central → Tools → Creators API</strong>, create an application and create credentials.</li>
+        <li>Copy the <strong>Credential ID</strong> and <strong>Credential Secret</strong> into Homey. Amazon only shows the secret when it is created.</li>
+        <li>Enable live data below and press <strong>Save & test Amazon connection</strong>.</li>
+      </ol>
+      <p><strong>Not eligible yet?</strong> Leave live data disabled. Shopping lists, parcel tracking and Homey Flows still work normally.</p>
+    </div>
+
     <p>
-      Optional. To enable live Amazon data, you need your own accepted Amazon Associates account
-      and Creators API credentials for the marketplace you use.
+      <a href="https://apps.creson.com/ShoppingCompanion/support/" target="_blank" rel="noreferrer">
+        Open the Shopping Companion step-by-step setup & support guide
+      </a>
     </p>
     <p>
       <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/onboarding" target="_blank" rel="noreferrer">
-        Open Amazon Creators API setup instructions
+        Open official Amazon Creators API documentation
       </a>
     </p>
 
+    <label class="homey-form-checkbox">
+      <input id="liveEnabled" type="checkbox">
+      <span>I have Creators API credentials — enable direct price, stock and product lookup from this Homey</span>
+    </label>
+
     <div class="homey-form-group">
-      <label class="homey-form-label" for="credentialId">Credential ID</label>
+      <label class="homey-form-label" for="credentialId">Credential ID — only available after Creators API approval</label>
       <input id="credentialId" class="homey-form-input" type="text" autocomplete="off">
+      <p class="homey-form-help">If Amazon does not show a button to create credentials yet, leave this empty and keep live data disabled.</p>
     </div>
     <div class="homey-form-group">
-      <label class="homey-form-label" for="credentialSecret">Credential Secret</label>
+      <label class="homey-form-label" for="credentialSecret">Credential Secret — copy it when Amazon creates it</label>
       <input id="credentialSecret" class="homey-form-input" type="password" autocomplete="new-password">
+      <p class="homey-form-help">This is not your Amazon shopping password. Do not paste your normal Amazon password here.</p>
     </div>
     <div class="homey-form-group">
       <label class="homey-form-label" for="credentialVersion">Credential version</label>
@@ -75,9 +95,9 @@
       </select>
     </div>
     <div class="homey-form-group">
-      <label class="homey-form-label" for="partnerTag">Partner Tag for selected marketplace</label>
+      <label class="homey-form-label" for="partnerTag">Partner Tag / Store ID for selected marketplace</label>
       <input id="partnerTag" class="homey-form-input" type="text" autocomplete="off">
-      <p class="homey-form-help">Partner Tags are marketplace-specific. Switch marketplace above to save another tag.</p>
+      <p class="homey-form-help">Amazon gives you this when the Associates account is created. You may save it even before API access is approved. Partner Tags are marketplace-specific.</p>
     </div>
     <div class="homey-form-group">
       <label class="homey-form-label" for="monitorInterval">Check watched products every</label>
