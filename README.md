@@ -18,6 +18,7 @@ A Homey Pro app for private shopping lists, Amazon product monitoring and parcel
 ## Current v0.1 scaffold
 
 The app already has persistent storage for:
+- local Amazon account profiles (name + marketplace, no credentials)
 - shopping lists and list items
 - Amazon product records (URL / ASIN / marketplace)
 - price and availability observations

@@ -38,6 +38,26 @@
       "method": "GET",
       "path": "/v1/providers"
     },
+    "getAccountConnectors": {
+      "method": "GET",
+      "path": "/v1/account-connectors"
+    },
+    "getAccounts": {
+      "method": "GET",
+      "path": "/v1/accounts"
+    },
+    "createAccount": {
+      "method": "POST",
+      "path": "/v1/accounts"
+    },
+    "updateAccount": {
+      "method": "PUT",
+      "path": "/v1/accounts/:id"
+    },
+    "removeAccount": {
+      "method": "DELETE",
+      "path": "/v1/accounts/:id"
+    },
     "getLists": {
       "method": "GET",
       "path": "/v1/lists"

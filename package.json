@@ -4,6 +4,7 @@
   "main": "app.js",
   "private": true,
   "scripts": {
+    "test": "node test/smoke.js",
     "validate": "homey app validate",
     "validate:verified": "homey app validate --level verified",
     "lint": "eslint --ext .js ."

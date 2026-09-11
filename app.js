@@ -3,12 +3,14 @@ const { Store } = require('./lib/store');
 const { listMarketplaces } = require('./lib/marketplaces');
 const { CAPABILITIES } = require('./lib/safety');
 const ProviderRegistry = require('./lib/providers/registry');
+const AccountConnectorRegistry = require('./lib/account-connectors/registry');
 
 class AmazonCompanionApp extends Homey.App {
   async onInit() {
     this.store = new Store(this.homey);
     await this.store.init();
     this.providers = new ProviderRegistry();
+    this.accountConnectors = new AccountConnectorRegistry();
     this._registerFlowCards();
     this.log('Amazon Companion initialized in read/list-only mode.');
   }
@@ -84,6 +86,26 @@ class AmazonCompanionApp extends Homey.App {
 
   getProviders() {
     return this.providers.list();
+  }
+
+  getAccountConnectors() {
+    return this.accountConnectors.list();
+  }
+
+  getAccounts() {
+    return this.store.getAccounts();
+  }
+
+  createAccount(input) {
+    return this.store.createAccount(input);
+  }
+
+  updateAccount(id, input) {
+    return this.store.updateAccount(id, input);
+  }
+
+  removeAccount(id) {
+    return this.store.removeAccount(id);
   }
 
   getLists() {

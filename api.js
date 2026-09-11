@@ -8,6 +8,21 @@ module.exports = {
   async getProviders({ homey }) {
     return homey.app.getProviders();
   },
+  async getAccountConnectors({ homey }) {
+    return homey.app.getAccountConnectors();
+  },
+  async getAccounts({ homey }) {
+    return homey.app.getAccounts();
+  },
+  async createAccount({ homey, body }) {
+    return homey.app.createAccount(body);
+  },
+  async updateAccount({ homey, params, body }) {
+    return homey.app.updateAccount(params.id, body);
+  },
+  async removeAccount({ homey, params }) {
+    return homey.app.removeAccount(params.id);
+  },
   async getLists({ homey }) {
     return homey.app.getLists();
   },
