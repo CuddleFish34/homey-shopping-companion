@@ -1,10 +1,12 @@
 {
   "id": "com.creson.shopping-companion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "compatibility": ">=12.9.0",
   "sdk": 3,
   "runtime": "nodejs",
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "name": {
     "en": "Shopping Companion",
     "sv": "Shopping Companion"
@@ -13,7 +15,9 @@
     "en": "Private shopping lists, product monitoring and parcel events for Amazon marketplaces. Never places orders.",
     "sv": "Privata inköpslistor, produktbevakning och kollihändelser för Amazon. Kan aldrig skapa beställningar."
   },
-  "category": ["tools"],
+  "category": [
+    "tools"
+  ],
   "permissions": [],
   "brandColor": "#FF9900",
   "images": {
@@ -28,28 +32,97 @@
     "email": "mikael@creson.se"
   },
   "api": {
-    "getHealth": { "method": "GET", "path": "/v1/health" },
-    "getMarketplaces": { "method": "GET", "path": "/v1/marketplaces" },
-    "getProviders": { "method": "GET", "path": "/v1/providers" },
-    "getAccountConnectors": { "method": "GET", "path": "/v1/account-connectors" },
-    "getAccounts": { "method": "GET", "path": "/v1/accounts" },
-    "createAccount": { "method": "POST", "path": "/v1/accounts" },
-    "updateAccount": { "method": "PUT", "path": "/v1/accounts/:id" },
-    "removeAccount": { "method": "DELETE", "path": "/v1/accounts/:id" },
-    "getLists": { "method": "GET", "path": "/v1/lists" },
-    "createList": { "method": "POST", "path": "/v1/lists" },
-    "getList": { "method": "GET", "path": "/v1/lists/:id" },
-    "addListItem": { "method": "POST", "path": "/v1/lists/:id/items" },
-    "updateListItem": { "method": "PUT", "path": "/v1/lists/:id/items/:itemId" },
-    "removeListItem": { "method": "DELETE", "path": "/v1/lists/:id/items/:itemId" },
-    "getProducts": { "method": "GET", "path": "/v1/products" },
-    "searchProducts": { "method": "POST", "path": "/v1/products/search" },
-    "refreshProduct": { "method": "POST", "path": "/v1/products/:id/refresh" },
-    "observeProduct": { "method": "POST", "path": "/v1/products/:id/observation" },
-    "reloadProviders": { "method": "POST", "path": "/v1/providers/reload" },
-    "testAmazonCreators": { "method": "POST", "path": "/v1/providers/amazon-creators/test" },
-    "getShipments": { "method": "GET", "path": "/v1/shipments" },
-    "addShipment": { "method": "POST", "path": "/v1/shipments" },
-    "updateShipment": { "method": "PUT", "path": "/v1/shipments/:id" }
+    "getHealth": {
+      "method": "GET",
+      "path": "/v1/health"
+    },
+    "getMarketplaces": {
+      "method": "GET",
+      "path": "/v1/marketplaces"
+    },
+    "getProviders": {
+      "method": "GET",
+      "path": "/v1/providers"
+    },
+    "getAccountConnectors": {
+      "method": "GET",
+      "path": "/v1/account-connectors"
+    },
+    "getAccounts": {
+      "method": "GET",
+      "path": "/v1/accounts"
+    },
+    "createAccount": {
+      "method": "POST",
+      "path": "/v1/accounts"
+    },
+    "updateAccount": {
+      "method": "PUT",
+      "path": "/v1/accounts/:id"
+    },
+    "removeAccount": {
+      "method": "DELETE",
+      "path": "/v1/accounts/:id"
+    },
+    "getLists": {
+      "method": "GET",
+      "path": "/v1/lists"
+    },
+    "createList": {
+      "method": "POST",
+      "path": "/v1/lists"
+    },
+    "getList": {
+      "method": "GET",
+      "path": "/v1/lists/:id"
+    },
+    "addListItem": {
+      "method": "POST",
+      "path": "/v1/lists/:id/items"
+    },
+    "updateListItem": {
+      "method": "PUT",
+      "path": "/v1/lists/:id/items/:itemId"
+    },
+    "removeListItem": {
+      "method": "DELETE",
+      "path": "/v1/lists/:id/items/:itemId"
+    },
+    "getProducts": {
+      "method": "GET",
+      "path": "/v1/products"
+    },
+    "searchProducts": {
+      "method": "POST",
+      "path": "/v1/products/search"
+    },
+    "refreshProduct": {
+      "method": "POST",
+      "path": "/v1/products/:id/refresh"
+    },
+    "observeProduct": {
+      "method": "POST",
+      "path": "/v1/products/:id/observation"
+    },
+    "reloadProviders": {
+      "method": "POST",
+      "path": "/v1/providers/reload"
+    },
+    "testAmazonCreators": {
+      "method": "POST",
+      "path": "/v1/providers/amazon-creators/test"
+    },
+    "getShipments": {
+      "method": "GET",
+      "path": "/v1/shipments"
+    },
+    "addShipment": {
+      "method": "POST",
+      "path": "/v1/shipments"
+    },
+    "updateShipment": {
+      "method": "PUT",
+      "path": "/v1/shipments/:id"
+    }
   }
 }

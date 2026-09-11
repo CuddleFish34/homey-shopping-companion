@@ -1,5 +1,9 @@
 {
   "0.1.0": {
     "en": "Initial test release with shopping lists, product price and stock monitoring, parcel events, Homey Flow cards, multi-marketplace support and optional Amazon Creators API integration. Purchases always remain manual."
+  },
+  "0.1.1": {
+    "en": "Improved Flow usability with list, product and shipment pickers instead of raw IDs.",
+    "sv": "Förbättrad Flow-användning med väljare för listor, produkter och kollin i stället för råa ID:n."
   }
 }
