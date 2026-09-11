@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Remove item [[item_id]] from list",
+    "sv": "Ta bort [[item_id]] från listan"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "list_id",
+      "title": {
+        "en": "List ID",
+        "sv": "List-ID"
+      }
+    },
+    {
+      "type": "text",
+      "name": "item_id",
+      "title": {
+        "en": "Item ID",
+        "sv": "Post-ID"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Remove item [[item_id]] from list · [[list_id]]",
+    "sv": "Ta bort [[item_id]] från listan · [[list_id]]"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Product [[product_id]] is in stock",
+    "sv": "Produkt [[product_id]] finns i lager"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "product_id",
+      "title": {
+        "en": "Product ID",
+        "sv": "Produkt-ID"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Product [[product_id]] is in stock",
+    "sv": "Produkt [[product_id]] finns i lager"
+  }
+}

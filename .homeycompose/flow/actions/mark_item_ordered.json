@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Mark item [[item_id]] as ordered",
+    "sv": "Markera [[item_id]] som beställd"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "list_id",
+      "title": {
+        "en": "List ID",
+        "sv": "List-ID"
+      }
+    },
+    {
+      "type": "text",
+      "name": "item_id",
+      "title": {
+        "en": "Item ID",
+        "sv": "Post-ID"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Mark item [[item_id]] as ordered · [[list_id]]",
+    "sv": "Markera [[item_id]] som beställd · [[list_id]]"
+  }
+}

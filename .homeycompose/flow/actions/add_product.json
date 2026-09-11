@@ -1,0 +1,45 @@
+{
+  "title": {
+    "en": "Add [[title]] to list [[list_id]]",
+    "sv": "Lägg till [[title]] i lista [[list_id]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "list_id",
+      "title": {
+        "en": "List ID",
+        "sv": "List-ID"
+      }
+    },
+    {
+      "type": "text",
+      "name": "url",
+      "title": {
+        "en": "Amazon URL",
+        "sv": "Amazon-URL"
+      }
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "title": {
+        "en": "Product name",
+        "sv": "Produktnamn"
+      }
+    },
+    {
+      "type": "number",
+      "name": "quantity",
+      "title": {
+        "en": "Quantity",
+        "sv": "Antal"
+      },
+      "min": 1
+    }
+  ],
+  "titleFormatted": {
+    "en": "Add [[title]] to list [[list_id]] · [[url]] · [[quantity]]",
+    "sv": "Lägg till [[title]] i lista [[list_id]] · [[url]] · [[quantity]]"
+  }
+}

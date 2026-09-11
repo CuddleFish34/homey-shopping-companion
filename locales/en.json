@@ -1,0 +1,6 @@
+{
+  "settings": {
+    "title": "Amazon Companion",
+    "security": "This app can never place orders or access checkout."
+  }
+}

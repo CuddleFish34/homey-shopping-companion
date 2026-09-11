@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Shipment [[shipment_id]] is delivered",
+    "sv": "Kolli [[shipment_id]] är levererat"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "shipment_id",
+      "title": {
+        "en": "Shipment ID",
+        "sv": "Kolli-ID"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Shipment [[shipment_id]] is delivered",
+    "sv": "Kolli [[shipment_id]] är levererat"
+  }
+}

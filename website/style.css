@@ -1,0 +1,26 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1d2433;
+  background: #f6f7f9;
+  line-height: 1.5;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1080px; margin: auto; padding: 28px 20px 60px; }
+.hero { padding: 72px 0 54px; }
+.badge { display: inline-block; padding: 7px 12px; border-radius: 999px; background: #fff0d8; font-weight: 700; }
+h1 { font-size: clamp(44px, 8vw, 78px); line-height: 1; margin: 18px 0; letter-spacing: -.045em; }
+.lead { font-size: clamp(20px, 3vw, 28px); max-width: 760px; color: #556070; }
+.security { margin: 24px 0; padding: 15px 18px; background: #eaf7ef; border-radius: 14px; font-weight: 700; }
+.actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.actions a { text-decoration: none; padding: 12px 18px; border-radius: 12px; border: 1px solid #ccd2da; color: inherit; background: white; font-weight: 700; }
+.actions .primary { background: #232f3e; color: white; border-color: #232f3e; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 16px; }
+article, .flows, .warning { background: white; border: 1px solid #e2e5e9; border-radius: 18px; padding: 24px; }
+article h2, .flows h2, .warning h2 { margin-top: 0; }
+.flows, .warning { margin-top: 18px; }
+.flowbox { display: grid; gap: 7px; background: #f6f7f9; padding: 16px; border-radius: 12px; margin-top: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.warning { border-left: 6px solid #ff9900; }
+footer { color: #67717f; margin-top: 34px; font-size: 14px; }
+footer a { color: inherit; }
+@media (max-width: 600px) { .hero { padding-top: 42px; } }

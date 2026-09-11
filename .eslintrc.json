@@ -1,0 +1,6 @@
+{
+  "extends": "athom/homey-app",
+  "env": {
+    "node": true
+  }
+}

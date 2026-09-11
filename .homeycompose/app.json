@@ -1,0 +1,39 @@
+{
+  "id": "com.creson.amazon-companion",
+  "version": "0.1.0",
+  "compatibility": ">=12.9.0",
+  "sdk": 3,
+  "runtime": "nodejs",
+  "platforms": ["local"],
+  "name": {
+    "en": "Amazon Companion",
+    "sv": "Amazon Companion"
+  },
+  "description": {
+    "en": "Private shopping lists, product monitoring and parcel events for Amazon marketplaces. Never places orders.",
+    "sv": "Privata inköpslistor, produktbevakning och kollihändelser för Amazon. Kan aldrig skapa beställningar."
+  },
+  "category": ["tools"],
+  "permissions": [],
+  "brandColor": "#FF9900",
+  "author": {
+    "name": "Mikael Creson",
+    "email": "mikael@creson.se"
+  },
+  "api": {
+    "getHealth": { "method": "GET", "path": "/v1/health" },
+    "getMarketplaces": { "method": "GET", "path": "/v1/marketplaces" },
+    "getProviders": { "method": "GET", "path": "/v1/providers" },
+    "getLists": { "method": "GET", "path": "/v1/lists" },
+    "createList": { "method": "POST", "path": "/v1/lists" },
+    "getList": { "method": "GET", "path": "/v1/lists/:id" },
+    "addListItem": { "method": "POST", "path": "/v1/lists/:id/items" },
+    "updateListItem": { "method": "PUT", "path": "/v1/lists/:id/items/:itemId" },
+    "removeListItem": { "method": "DELETE", "path": "/v1/lists/:id/items/:itemId" },
+    "getProducts": { "method": "GET", "path": "/v1/products" },
+    "observeProduct": { "method": "POST", "path": "/v1/products/:id/observation" },
+    "getShipments": { "method": "GET", "path": "/v1/shipments" },
+    "addShipment": { "method": "POST", "path": "/v1/shipments" },
+    "updateShipment": { "method": "PUT", "path": "/v1/shipments/:id" }
+  }
+}

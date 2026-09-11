@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "Add tracking number [[tracking_number]]",
+    "sv": "Lägg till kollinummer [[tracking_number]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "tracking_number",
+      "title": {
+        "en": "Tracking number",
+        "sv": "Kollinummer"
+      }
+    },
+    {
+      "type": "text",
+      "name": "carrier",
+      "title": {
+        "en": "Carrier",
+        "sv": "Transportör"
+      }
+    },
+    {
+      "type": "text",
+      "name": "order_reference",
+      "title": {
+        "en": "Order reference",
+        "sv": "Orderreferens"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Add tracking number [[tracking_number]] · [[carrier]] · [[order_reference]]",
+    "sv": "Lägg till kollinummer [[tracking_number]] · [[carrier]] · [[order_reference]]"
+  }
+}

@@ -1,0 +1,808 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.creson.amazon-companion",
+  "version": "0.1.0",
+  "compatibility": ">=12.9.0",
+  "sdk": 3,
+  "runtime": "nodejs",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Amazon Companion",
+    "sv": "Amazon Companion"
+  },
+  "description": {
+    "en": "Private shopping lists, product monitoring and parcel events for Amazon marketplaces. Never places orders.",
+    "sv": "Privata inköpslistor, produktbevakning och kollihändelser för Amazon. Kan aldrig skapa beställningar."
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "brandColor": "#FF9900",
+  "author": {
+    "name": "Mikael Creson",
+    "email": "mikael@creson.se"
+  },
+  "api": {
+    "getHealth": {
+      "method": "GET",
+      "path": "/v1/health"
+    },
+    "getMarketplaces": {
+      "method": "GET",
+      "path": "/v1/marketplaces"
+    },
+    "getProviders": {
+      "method": "GET",
+      "path": "/v1/providers"
+    },
+    "getLists": {
+      "method": "GET",
+      "path": "/v1/lists"
+    },
+    "createList": {
+      "method": "POST",
+      "path": "/v1/lists"
+    },
+    "getList": {
+      "method": "GET",
+      "path": "/v1/lists/:id"
+    },
+    "addListItem": {
+      "method": "POST",
+      "path": "/v1/lists/:id/items"
+    },
+    "updateListItem": {
+      "method": "PUT",
+      "path": "/v1/lists/:id/items/:itemId"
+    },
+    "removeListItem": {
+      "method": "DELETE",
+      "path": "/v1/lists/:id/items/:itemId"
+    },
+    "getProducts": {
+      "method": "GET",
+      "path": "/v1/products"
+    },
+    "observeProduct": {
+      "method": "POST",
+      "path": "/v1/products/:id/observation"
+    },
+    "getShipments": {
+      "method": "GET",
+      "path": "/v1/shipments"
+    },
+    "addShipment": {
+      "method": "POST",
+      "path": "/v1/shipments"
+    },
+    "updateShipment": {
+      "method": "PUT",
+      "path": "/v1/shipments/:id"
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "A product is back in stock",
+          "sv": "En produkt finns i lager igen"
+        },
+        "tokens": [
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "title": {
+              "en": "URL",
+              "sv": "URL"
+            }
+          }
+        ],
+        "id": "back_in_stock"
+      },
+      {
+        "title": {
+          "en": "A product is added to a shopping list",
+          "sv": "En produkt läggs till i en inköpslista"
+        },
+        "tokens": [
+          {
+            "name": "list",
+            "type": "string",
+            "title": {
+              "en": "List",
+              "sv": "Lista"
+            }
+          },
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "quantity",
+            "type": "number",
+            "title": {
+              "en": "Quantity",
+              "sv": "Antal"
+            }
+          }
+        ],
+        "id": "list_item_added"
+      },
+      {
+        "title": {
+          "en": "A new tracking number is added",
+          "sv": "Ett nytt kollinummer läggs till"
+        },
+        "tokens": [
+          {
+            "name": "tracking_number",
+            "type": "string",
+            "title": {
+              "en": "Tracking number",
+              "sv": "Kollinummer"
+            }
+          },
+          {
+            "name": "carrier",
+            "type": "string",
+            "title": {
+              "en": "Carrier",
+              "sv": "Transportör"
+            }
+          },
+          {
+            "name": "order_reference",
+            "type": "string",
+            "title": {
+              "en": "Order reference",
+              "sv": "Orderreferens"
+            }
+          }
+        ],
+        "id": "new_tracking_number"
+      },
+      {
+        "title": {
+          "en": "A product goes out of stock",
+          "sv": "En produkt tar slut i lager"
+        },
+        "tokens": [
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "title": {
+              "en": "URL",
+              "sv": "URL"
+            }
+          }
+        ],
+        "id": "out_of_stock"
+      },
+      {
+        "title": {
+          "en": "A product price changed",
+          "sv": "Ett produktpris ändrades"
+        },
+        "tokens": [
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "old_price",
+            "type": "number",
+            "title": {
+              "en": "Old price",
+              "sv": "Tidigare pris"
+            }
+          },
+          {
+            "name": "new_price",
+            "type": "number",
+            "title": {
+              "en": "New price",
+              "sv": "Nytt pris"
+            }
+          },
+          {
+            "name": "change_amount",
+            "type": "number",
+            "title": {
+              "en": "Change",
+              "sv": "Förändring"
+            }
+          },
+          {
+            "name": "change_percent",
+            "type": "number",
+            "title": {
+              "en": "Change %",
+              "sv": "Förändring %"
+            }
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "title": {
+              "en": "Currency",
+              "sv": "Valuta"
+            }
+          }
+        ],
+        "id": "price_changed"
+      },
+      {
+        "title": {
+          "en": "A product drops by [[amount]] or more",
+          "sv": "En produkt sjunker med [[amount]] eller mer"
+        },
+        "args": [
+          {
+            "type": "number",
+            "name": "amount",
+            "title": {
+              "en": "Amount",
+              "sv": "Belopp"
+            },
+            "min": 0
+          }
+        ],
+        "tokens": [
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "drop_amount",
+            "type": "number",
+            "title": {
+              "en": "Price drop",
+              "sv": "Prisfall"
+            }
+          },
+          {
+            "name": "new_price",
+            "type": "number",
+            "title": {
+              "en": "New price",
+              "sv": "Nytt pris"
+            }
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "title": {
+              "en": "Currency",
+              "sv": "Valuta"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "A product drops by [[amount]] or more",
+          "sv": "En produkt sjunker med [[amount]] eller mer"
+        },
+        "id": "price_dropped_amount"
+      },
+      {
+        "title": {
+          "en": "A product drops by [[percent]]% or more",
+          "sv": "En produkt sjunker med [[percent]]% eller mer"
+        },
+        "args": [
+          {
+            "type": "number",
+            "name": "percent",
+            "title": {
+              "en": "Percent",
+              "sv": "Procent"
+            },
+            "min": 0
+          }
+        ],
+        "tokens": [
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "drop_percent",
+            "type": "number",
+            "title": {
+              "en": "Price drop %",
+              "sv": "Prisfall %"
+            }
+          },
+          {
+            "name": "new_price",
+            "type": "number",
+            "title": {
+              "en": "New price",
+              "sv": "Nytt pris"
+            }
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "title": {
+              "en": "Currency",
+              "sv": "Valuta"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "A product drops by [[percent]]% or more",
+          "sv": "En produkt sjunker med [[percent]]% eller mer"
+        },
+        "id": "price_dropped_percent"
+      },
+      {
+        "title": {
+          "en": "A product becomes unavailable",
+          "sv": "En produkt blir otillgänglig"
+        },
+        "tokens": [
+          {
+            "name": "product",
+            "type": "string",
+            "title": {
+              "en": "Product",
+              "sv": "Produkt"
+            }
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "title": {
+              "en": "URL",
+              "sv": "URL"
+            }
+          }
+        ],
+        "id": "product_unavailable"
+      },
+      {
+        "title": {
+          "en": "A shipment is delivered",
+          "sv": "Ett kolli är levererat"
+        },
+        "tokens": [
+          {
+            "name": "tracking_number",
+            "type": "string",
+            "title": {
+              "en": "Tracking number",
+              "sv": "Kollinummer"
+            }
+          },
+          {
+            "name": "carrier",
+            "type": "string",
+            "title": {
+              "en": "Carrier",
+              "sv": "Transportör"
+            }
+          }
+        ],
+        "id": "shipment_delivered"
+      },
+      {
+        "title": {
+          "en": "A shipment status changes",
+          "sv": "En kollistatus ändras"
+        },
+        "tokens": [
+          {
+            "name": "tracking_number",
+            "type": "string",
+            "title": {
+              "en": "Tracking number",
+              "sv": "Kollinummer"
+            }
+          },
+          {
+            "name": "carrier",
+            "type": "string",
+            "title": {
+              "en": "Carrier",
+              "sv": "Transportör"
+            }
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "title": {
+              "en": "Status",
+              "sv": "Status"
+            }
+          }
+        ],
+        "id": "shipment_status_changed"
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "List [[list_id]] contains product [[product_id]]",
+          "sv": "Lista [[list_id]] innehåller produkt [[product_id]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "list_id",
+            "title": {
+              "en": "List ID",
+              "sv": "List-ID"
+            }
+          },
+          {
+            "type": "text",
+            "name": "product_id",
+            "title": {
+              "en": "Product ID",
+              "sv": "Produkt-ID"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "List [[list_id]] contains product [[product_id]]",
+          "sv": "Lista [[list_id]] innehåller produkt [[product_id]]"
+        },
+        "id": "list_contains_product"
+      },
+      {
+        "title": {
+          "en": "Product [[product_id]] is in stock",
+          "sv": "Produkt [[product_id]] finns i lager"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "product_id",
+            "title": {
+              "en": "Product ID",
+              "sv": "Produkt-ID"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Product [[product_id]] is in stock",
+          "sv": "Produkt [[product_id]] finns i lager"
+        },
+        "id": "product_in_stock"
+      },
+      {
+        "title": {
+          "en": "Product [[product_id]] costs less than [[amount]]",
+          "sv": "Produkt [[product_id]] kostar mindre än [[amount]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "product_id",
+            "title": {
+              "en": "Product ID",
+              "sv": "Produkt-ID"
+            }
+          },
+          {
+            "type": "number",
+            "name": "amount",
+            "title": {
+              "en": "Amount",
+              "sv": "Belopp"
+            },
+            "min": 0
+          }
+        ],
+        "titleFormatted": {
+          "en": "Product [[product_id]] costs less than [[amount]]",
+          "sv": "Produkt [[product_id]] kostar mindre än [[amount]]"
+        },
+        "id": "product_price_below"
+      },
+      {
+        "title": {
+          "en": "Shipment [[shipment_id]] is delivered",
+          "sv": "Kolli [[shipment_id]] är levererat"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "shipment_id",
+            "title": {
+              "en": "Shipment ID",
+              "sv": "Kolli-ID"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Shipment [[shipment_id]] is delivered",
+          "sv": "Kolli [[shipment_id]] är levererat"
+        },
+        "id": "shipment_is_delivered"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Add [[title]] to list [[list_id]]",
+          "sv": "Lägg till [[title]] i lista [[list_id]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "list_id",
+            "title": {
+              "en": "List ID",
+              "sv": "List-ID"
+            }
+          },
+          {
+            "type": "text",
+            "name": "url",
+            "title": {
+              "en": "Amazon URL",
+              "sv": "Amazon-URL"
+            }
+          },
+          {
+            "type": "text",
+            "name": "title",
+            "title": {
+              "en": "Product name",
+              "sv": "Produktnamn"
+            }
+          },
+          {
+            "type": "number",
+            "name": "quantity",
+            "title": {
+              "en": "Quantity",
+              "sv": "Antal"
+            },
+            "min": 1
+          }
+        ],
+        "titleFormatted": {
+          "en": "Add [[title]] to list [[list_id]] · [[url]] · [[quantity]]",
+          "sv": "Lägg till [[title]] i lista [[list_id]] · [[url]] · [[quantity]]"
+        },
+        "id": "add_product"
+      },
+      {
+        "title": {
+          "en": "Add tracking number [[tracking_number]]",
+          "sv": "Lägg till kollinummer [[tracking_number]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "tracking_number",
+            "title": {
+              "en": "Tracking number",
+              "sv": "Kollinummer"
+            }
+          },
+          {
+            "type": "text",
+            "name": "carrier",
+            "title": {
+              "en": "Carrier",
+              "sv": "Transportör"
+            }
+          },
+          {
+            "type": "text",
+            "name": "order_reference",
+            "title": {
+              "en": "Order reference",
+              "sv": "Orderreferens"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Add tracking number [[tracking_number]] · [[carrier]] · [[order_reference]]",
+          "sv": "Lägg till kollinummer [[tracking_number]] · [[carrier]] · [[order_reference]]"
+        },
+        "id": "add_tracking"
+      },
+      {
+        "title": {
+          "en": "Create shopping list [[name]]",
+          "sv": "Skapa inköpslistan [[name]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "name",
+            "title": {
+              "en": "Name",
+              "sv": "Namn"
+            }
+          },
+          {
+            "type": "text",
+            "name": "marketplace",
+            "title": {
+              "en": "Marketplace code (SE, DE, UK...)",
+              "sv": "Marknadsplatskod (SE, DE, UK...)"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Create shopping list [[name]] · [[marketplace]]",
+          "sv": "Skapa inköpslistan [[name]] · [[marketplace]]"
+        },
+        "id": "create_list"
+      },
+      {
+        "title": {
+          "en": "Mark item [[item_id]] as ordered",
+          "sv": "Markera [[item_id]] som beställd"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "list_id",
+            "title": {
+              "en": "List ID",
+              "sv": "List-ID"
+            }
+          },
+          {
+            "type": "text",
+            "name": "item_id",
+            "title": {
+              "en": "Item ID",
+              "sv": "Post-ID"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Mark item [[item_id]] as ordered · [[list_id]]",
+          "sv": "Markera [[item_id]] som beställd · [[list_id]]"
+        },
+        "id": "mark_item_ordered"
+      },
+      {
+        "title": {
+          "en": "Record observation for product [[product_id]]",
+          "sv": "Registrera observation för [[product_id]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "product_id",
+            "title": {
+              "en": "Product ID",
+              "sv": "Produkt-ID"
+            }
+          },
+          {
+            "type": "number",
+            "name": "price",
+            "title": {
+              "en": "Price",
+              "sv": "Pris"
+            },
+            "min": 0
+          },
+          {
+            "type": "text",
+            "name": "currency",
+            "title": {
+              "en": "Currency",
+              "sv": "Valuta"
+            }
+          },
+          {
+            "type": "text",
+            "name": "availability",
+            "title": {
+              "en": "Availability",
+              "sv": "Lagertillstånd"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Record observation for product [[product_id]] · [[price]] · [[currency]] · [[availability]]",
+          "sv": "Registrera observation för [[product_id]] · [[price]] · [[currency]] · [[availability]]"
+        },
+        "id": "record_product_observation"
+      },
+      {
+        "title": {
+          "en": "Remove item [[item_id]] from list",
+          "sv": "Ta bort [[item_id]] från listan"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "list_id",
+            "title": {
+              "en": "List ID",
+              "sv": "List-ID"
+            }
+          },
+          {
+            "type": "text",
+            "name": "item_id",
+            "title": {
+              "en": "Item ID",
+              "sv": "Post-ID"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Remove item [[item_id]] from list · [[list_id]]",
+          "sv": "Ta bort [[item_id]] från listan · [[list_id]]"
+        },
+        "id": "remove_product"
+      },
+      {
+        "title": {
+          "en": "Set shipment [[shipment_id]] status to [[status]]",
+          "sv": "Sätt kolli [[shipment_id]] till [[status]]"
+        },
+        "args": [
+          {
+            "type": "text",
+            "name": "shipment_id",
+            "title": {
+              "en": "Shipment ID",
+              "sv": "Kolli-ID"
+            }
+          },
+          {
+            "type": "text",
+            "name": "status",
+            "title": {
+              "en": "Status",
+              "sv": "Status"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Set shipment [[shipment_id]] status to [[status]]",
+          "sv": "Sätt kolli [[shipment_id]] till [[status]]"
+        },
+        "id": "set_shipment_status"
+      }
+    ]
+  }
+}

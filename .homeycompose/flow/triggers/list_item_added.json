@@ -1,0 +1,1 @@
+{"title":{"en":"A product is added to a shopping list","sv":"En produkt läggs till i en inköpslista"},"tokens":[{"name":"list","type":"string","title":{"en":"List","sv":"Lista"}},{"name":"product","type":"string","title":{"en":"Product","sv":"Produkt"}},{"name":"quantity","type":"number","title":{"en":"Quantity","sv":"Antal"}}]}

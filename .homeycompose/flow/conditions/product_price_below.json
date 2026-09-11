@@ -1,0 +1,29 @@
+{
+  "title": {
+    "en": "Product [[product_id]] costs less than [[amount]]",
+    "sv": "Produkt [[product_id]] kostar mindre än [[amount]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "product_id",
+      "title": {
+        "en": "Product ID",
+        "sv": "Produkt-ID"
+      }
+    },
+    {
+      "type": "number",
+      "name": "amount",
+      "title": {
+        "en": "Amount",
+        "sv": "Belopp"
+      },
+      "min": 0
+    }
+  ],
+  "titleFormatted": {
+    "en": "Product [[product_id]] costs less than [[amount]]",
+    "sv": "Produkt [[product_id]] kostar mindre än [[amount]]"
+  }
+}

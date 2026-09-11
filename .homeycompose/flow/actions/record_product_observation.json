@@ -1,0 +1,45 @@
+{
+  "title": {
+    "en": "Record observation for product [[product_id]]",
+    "sv": "Registrera observation för [[product_id]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "product_id",
+      "title": {
+        "en": "Product ID",
+        "sv": "Produkt-ID"
+      }
+    },
+    {
+      "type": "number",
+      "name": "price",
+      "title": {
+        "en": "Price",
+        "sv": "Pris"
+      },
+      "min": 0
+    },
+    {
+      "type": "text",
+      "name": "currency",
+      "title": {
+        "en": "Currency",
+        "sv": "Valuta"
+      }
+    },
+    {
+      "type": "text",
+      "name": "availability",
+      "title": {
+        "en": "Availability",
+        "sv": "Lagertillstånd"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Record observation for product [[product_id]] · [[price]] · [[currency]] · [[availability]]",
+    "sv": "Registrera observation för [[product_id]] · [[price]] · [[currency]] · [[availability]]"
+  }
+}

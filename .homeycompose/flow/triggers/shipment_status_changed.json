@@ -1,0 +1,1 @@
+{"title":{"en":"A shipment status changes","sv":"En kollistatus ändras"},"tokens":[{"name":"tracking_number","type":"string","title":{"en":"Tracking number","sv":"Kollinummer"}},{"name":"carrier","type":"string","title":{"en":"Carrier","sv":"Transportör"}},{"name":"status","type":"string","title":{"en":"Status","sv":"Status"}}]}

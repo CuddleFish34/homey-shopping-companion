@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="/homey.js" data-origin="settings"></script>
+</head>
+<body>
+  <header class="homey-header">
+    <h1 class="homey-title">Amazon Companion</h1>
+    <p class="homey-subtitle">Shopping lists, price/stock monitoring and parcel events.</p>
+  </header>
+
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend">Marketplace</legend>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="market">Default Amazon marketplace</label>
+      <select id="market" class="homey-form-select">
+        <option value="SE">Sweden — amazon.se (SEK)</option>
+        <option value="DE">Germany — amazon.de (EUR)</option>
+        <option value="UK">United Kingdom — amazon.co.uk (GBP)</option>
+        <option value="US">United States — amazon.com (USD)</option>
+        <option value="FR">France — amazon.fr (EUR)</option>
+        <option value="IT">Italy — amazon.it (EUR)</option>
+        <option value="ES">Spain — amazon.es (EUR)</option>
+        <option value="NL">Netherlands — amazon.nl (EUR)</option>
+        <option value="PL">Poland — amazon.pl (PLN)</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend">List cleanup</legend>
+    <label class="homey-form-checkbox">
+      <input id="removeDelivered" type="checkbox">
+      <span>Remove linked items when a shipment is delivered</span>
+    </label>
+    <label class="homey-form-checkbox">
+      <input id="removeOrdered" type="checkbox">
+      <span>Remove linked items as soon as they are marked ordered</span>
+    </label>
+  </fieldset>
+
+  <div class="homey-form-group">
+    <button id="save" class="homey-button-primary-full">Save</button>
+  </div>
+
+  <p><strong>Security:</strong> Amazon Companion has no order-placement,
+    cart, payment or address capability. Amazon purchases must always be
+    completed manually by the user on Amazon.</p>
+
+  <script>
+    function onHomeyReady(Homey) {
+      const market = document.getElementById('market');
+      const removeDelivered = document.getElementById('removeDelivered');
+      const removeOrdered = document.getElementById('removeOrdered');
+      const save = document.getElementById('save');
+
+      Homey.get('amazon_companion_state', (error, state) => {
+        if (!error && state && state.preferences) {
+          market.value = state.preferences.defaultMarketplace || 'SE';
+          removeDelivered.checked = state.preferences.autoRemoveOnDelivered !== false;
+          removeOrdered.checked = state.preferences.autoRemoveOnOrdered === true;
+        }
+        Homey.ready();
+      });
+
+      save.addEventListener('click', () => {
+        Homey.get('amazon_companion_state', (error, state) => {
+          if (error || !state) return Homey.alert('Could not load settings.');
+          state.preferences = state.preferences || {};
+          state.preferences.defaultMarketplace = market.value;
+          state.preferences.autoRemoveOnDelivered = removeDelivered.checked;
+          state.preferences.autoRemoveOnOrdered = removeOrdered.checked;
+          Homey.set('amazon_companion_state', state, setError => {
+            if (setError) return Homey.alert(setError.message || String(setError));
+            Homey.alert('Saved.');
+          });
+        });
+      });
+    }
+  </script>
+</body>
+</html>

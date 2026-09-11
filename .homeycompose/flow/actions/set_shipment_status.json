@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Set shipment [[shipment_id]] status to [[status]]",
+    "sv": "Sätt kolli [[shipment_id]] till [[status]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "shipment_id",
+      "title": {
+        "en": "Shipment ID",
+        "sv": "Kolli-ID"
+      }
+    },
+    {
+      "type": "text",
+      "name": "status",
+      "title": {
+        "en": "Status",
+        "sv": "Status"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Set shipment [[shipment_id]] status to [[status]]",
+    "sv": "Sätt kolli [[shipment_id]] till [[status]]"
+  }
+}

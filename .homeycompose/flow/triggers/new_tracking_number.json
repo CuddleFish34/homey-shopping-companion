@@ -1,0 +1,1 @@
+{"title":{"en":"A new tracking number is added","sv":"Ett nytt kollinummer läggs till"},"tokens":[{"name":"tracking_number","type":"string","title":{"en":"Tracking number","sv":"Kollinummer"}},{"name":"carrier","type":"string","title":{"en":"Carrier","sv":"Transportör"}},{"name":"order_reference","type":"string","title":{"en":"Order reference","sv":"Orderreferens"}}]}

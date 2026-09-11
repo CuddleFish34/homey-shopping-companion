@@ -1,0 +1,55 @@
+{
+  "title": {
+    "en": "A product drops by [[amount]] or more",
+    "sv": "En produkt sjunker med [[amount]] eller mer"
+  },
+  "args": [
+    {
+      "type": "number",
+      "name": "amount",
+      "title": {
+        "en": "Amount",
+        "sv": "Belopp"
+      },
+      "min": 0
+    }
+  ],
+  "tokens": [
+    {
+      "name": "product",
+      "type": "string",
+      "title": {
+        "en": "Product",
+        "sv": "Produkt"
+      }
+    },
+    {
+      "name": "drop_amount",
+      "type": "number",
+      "title": {
+        "en": "Price drop",
+        "sv": "Prisfall"
+      }
+    },
+    {
+      "name": "new_price",
+      "type": "number",
+      "title": {
+        "en": "New price",
+        "sv": "Nytt pris"
+      }
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "title": {
+        "en": "Currency",
+        "sv": "Valuta"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "A product drops by [[amount]] or more",
+    "sv": "En produkt sjunker med [[amount]] eller mer"
+  }
+}

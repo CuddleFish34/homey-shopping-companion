@@ -1,0 +1,55 @@
+{
+  "title": {
+    "en": "A product drops by [[percent]]% or more",
+    "sv": "En produkt sjunker med [[percent]]% eller mer"
+  },
+  "args": [
+    {
+      "type": "number",
+      "name": "percent",
+      "title": {
+        "en": "Percent",
+        "sv": "Procent"
+      },
+      "min": 0
+    }
+  ],
+  "tokens": [
+    {
+      "name": "product",
+      "type": "string",
+      "title": {
+        "en": "Product",
+        "sv": "Produkt"
+      }
+    },
+    {
+      "name": "drop_percent",
+      "type": "number",
+      "title": {
+        "en": "Price drop %",
+        "sv": "Prisfall %"
+      }
+    },
+    {
+      "name": "new_price",
+      "type": "number",
+      "title": {
+        "en": "New price",
+        "sv": "Nytt pris"
+      }
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "title": {
+        "en": "Currency",
+        "sv": "Valuta"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "A product drops by [[percent]]% or more",
+    "sv": "En produkt sjunker med [[percent]]% eller mer"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "com.creson.amazon-companion",
+  "version": "0.1.0",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "validate": "homey app validate",
+    "validate:verified": "homey app validate --level verified",
+    "lint": "eslint --ext .js ."
+  },
+  "devDependencies": {
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.12",
+    "eslint": "^7.32.0",
+    "eslint-config-athom": "^3.1.5"
+  }
+}

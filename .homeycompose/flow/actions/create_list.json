@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Create shopping list [[name]]",
+    "sv": "Skapa inköpslistan [[name]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "name",
+      "title": {
+        "en": "Name",
+        "sv": "Namn"
+      }
+    },
+    {
+      "type": "text",
+      "name": "marketplace",
+      "title": {
+        "en": "Marketplace code (SE, DE, UK...)",
+        "sv": "Marknadsplatskod (SE, DE, UK...)"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "Create shopping list [[name]] · [[marketplace]]",
+    "sv": "Skapa inköpslistan [[name]] · [[marketplace]]"
+  }
+}

@@ -1,0 +1,1 @@
+{"title":{"en":"A shipment is delivered","sv":"Ett kolli är levererat"},"tokens":[{"name":"tracking_number","type":"string","title":{"en":"Tracking number","sv":"Kollinummer"}},{"name":"carrier","type":"string","title":{"en":"Carrier","sv":"Transportör"}}]}

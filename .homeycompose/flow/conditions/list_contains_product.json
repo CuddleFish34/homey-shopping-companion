@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "List [[list_id]] contains product [[product_id]]",
+    "sv": "Lista [[list_id]] innehåller produkt [[product_id]]"
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "list_id",
+      "title": {
+        "en": "List ID",
+        "sv": "List-ID"
+      }
+    },
+    {
+      "type": "text",
+      "name": "product_id",
+      "title": {
+        "en": "Product ID",
+        "sv": "Produkt-ID"
+      }
+    }
+  ],
+  "titleFormatted": {
+    "en": "List [[list_id]] contains product [[product_id]]",
+    "sv": "Lista [[list_id]] innehåller produkt [[product_id]]"
+  }
+}

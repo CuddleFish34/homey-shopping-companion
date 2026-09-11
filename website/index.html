@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Amazon Companion for Homey — private shopping lists, price monitoring and parcel events. Never places orders.">
+  <title>Amazon Companion for Homey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="badge">Homey Pro app · Open source</div>
+      <h1>Amazon Companion</h1>
+      <p class="lead">Shopping lists, price & stock monitoring and parcel events — stored on your own Homey.</p>
+      <div class="security">🔒 No checkout. No payments. No Amazon password. No order placement.</div>
+      <div class="actions">
+        <a class="primary" href="https://github.com/CuddleFish34/homey-amazon-companion">View on GitHub</a>
+        <a href="#features">See features</a>
+      </div>
+    </section>
+
+    <section id="features" class="grid">
+      <article><h2>Shopping lists</h2><p>Create lists, add Amazon products, change quantities and remove items from Homey or a future ChatGPT connector.</p></article>
+      <article><h2>Price watching</h2><p>Trigger flows when a price changes, drops by a currency amount or falls by a chosen percentage.</p></article>
+      <article><h2>Stock watching</h2><p>React when a product goes out of stock, becomes unavailable or comes back.</p></article>
+      <article><h2>Parcel events</h2><p>Store tracking numbers and trigger flows on new parcels, status changes and delivery.</p></article>
+      <article><h2>Multiple countries</h2><p>Designed for Amazon marketplaces such as Sweden, Germany, UK, USA and more, with local currencies.</p></article>
+      <article><h2>Private by design</h2><p>Your lists and tracking data live on your Homey Pro. The app never stores an authenticated Amazon browser session.</p></article>
+    </section>
+
+    <section class="flows">
+      <h2>Built for Homey Flows</h2>
+      <div class="flowbox">
+        <span>WHEN price drops ≥ 15%</span>
+        <span>AND product is in stock</span>
+        <span>THEN send me a notification</span>
+      </div>
+      <div class="flowbox">
+        <span>WHEN a new tracking number appears</span>
+        <span>THEN pass it to my parcel workflow</span>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>Purchases always stay manual</h2>
+      <p>Amazon Companion intentionally has no API for cart management, checkout, payment methods, shipping-address changes or placing an order. When you want to buy something, you open Amazon and complete the purchase yourself.</p>
+    </section>
+
+    <footer>
+      <p>Independent community project by Creson. Not affiliated with or endorsed by Amazon.</p>
+      <p><a href="https://github.com/CuddleFish34/homey-amazon-companion/blob/main/SECURITY.md">Security model</a> · <a href="https://github.com/CuddleFish34/homey-amazon-companion">Source code</a></p>
+    </footer>
+  </main>
+</body>
+</html>
