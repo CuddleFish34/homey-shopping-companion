@@ -5,11 +5,15 @@
   },
   "args": [
     {
-      "type": "text",
+      "type": "autocomplete",
       "name": "list_id",
       "title": {
-        "en": "List ID",
-        "sv": "List-ID"
+        "en": "Shopping list",
+        "sv": "Inköpslista"
+      },
+      "placeholder": {
+        "en": "Choose a list",
+        "sv": "Välj en lista"
       }
     },
     {

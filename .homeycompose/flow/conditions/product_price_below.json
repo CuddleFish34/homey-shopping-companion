@@ -5,11 +5,15 @@
   },
   "args": [
     {
-      "type": "text",
+      "type": "autocomplete",
       "name": "product_id",
       "title": {
-        "en": "Product ID",
-        "sv": "Produkt-ID"
+        "en": "Product",
+        "sv": "Produkt"
+      },
+      "placeholder": {
+        "en": "Choose a product",
+        "sv": "Välj en produkt"
       }
     },
     {

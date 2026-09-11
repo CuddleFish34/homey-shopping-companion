@@ -5,11 +5,15 @@
   },
   "args": [
     {
-      "type": "text",
+      "type": "autocomplete",
       "name": "shipment_id",
       "title": {
-        "en": "Shipment ID",
-        "sv": "Kolli-ID"
+        "en": "Shipment",
+        "sv": "Kolli"
+      },
+      "placeholder": {
+        "en": "Choose a shipment",
+        "sv": "Välj ett kolli"
       }
     },
     {

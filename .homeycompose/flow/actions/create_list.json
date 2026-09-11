@@ -13,12 +13,168 @@
       }
     },
     {
-      "type": "text",
+      "type": "dropdown",
       "name": "marketplace",
       "title": {
-        "en": "Marketplace code (SE, DE, UK...)",
-        "sv": "Marknadsplatskod (SE, DE, UK...)"
-      }
+        "en": "Marketplace",
+        "sv": "Marknadsplats"
+      },
+      "values": [
+        {
+          "id": "SE",
+          "title": {
+            "en": "Sweden — amazon.se",
+            "sv": "Sverige — amazon.se"
+          }
+        },
+        {
+          "id": "DE",
+          "title": {
+            "en": "Germany — amazon.de",
+            "sv": "Tyskland — amazon.de"
+          }
+        },
+        {
+          "id": "UK",
+          "title": {
+            "en": "United Kingdom — amazon.co.uk",
+            "sv": "Storbritannien — amazon.co.uk"
+          }
+        },
+        {
+          "id": "US",
+          "title": {
+            "en": "United States — amazon.com",
+            "sv": "USA — amazon.com"
+          }
+        },
+        {
+          "id": "FR",
+          "title": {
+            "en": "France — amazon.fr",
+            "sv": "Frankrike — amazon.fr"
+          }
+        },
+        {
+          "id": "IT",
+          "title": {
+            "en": "Italy — amazon.it",
+            "sv": "Italien — amazon.it"
+          }
+        },
+        {
+          "id": "ES",
+          "title": {
+            "en": "Spain — amazon.es",
+            "sv": "Spanien — amazon.es"
+          }
+        },
+        {
+          "id": "NL",
+          "title": {
+            "en": "Netherlands — amazon.nl",
+            "sv": "Nederländerna — amazon.nl"
+          }
+        },
+        {
+          "id": "PL",
+          "title": {
+            "en": "Poland — amazon.pl",
+            "sv": "Polen — amazon.pl"
+          }
+        },
+        {
+          "id": "BE",
+          "title": {
+            "en": "Belgium — amazon.com.be",
+            "sv": "Belgien — amazon.com.be"
+          }
+        },
+        {
+          "id": "IE",
+          "title": {
+            "en": "Ireland — amazon.ie",
+            "sv": "Irland — amazon.ie"
+          }
+        },
+        {
+          "id": "CA",
+          "title": {
+            "en": "Canada — amazon.ca",
+            "sv": "Kanada — amazon.ca"
+          }
+        },
+        {
+          "id": "MX",
+          "title": {
+            "en": "Mexico — amazon.com.mx",
+            "sv": "Mexiko — amazon.com.mx"
+          }
+        },
+        {
+          "id": "BR",
+          "title": {
+            "en": "Brazil — amazon.com.br",
+            "sv": "Brasilien — amazon.com.br"
+          }
+        },
+        {
+          "id": "JP",
+          "title": {
+            "en": "Japan — amazon.co.jp",
+            "sv": "Japan — amazon.co.jp"
+          }
+        },
+        {
+          "id": "SG",
+          "title": {
+            "en": "Singapore — amazon.sg",
+            "sv": "Singapore — amazon.sg"
+          }
+        },
+        {
+          "id": "AU",
+          "title": {
+            "en": "Australia — amazon.com.au",
+            "sv": "Australien — amazon.com.au"
+          }
+        },
+        {
+          "id": "IN",
+          "title": {
+            "en": "India — amazon.in",
+            "sv": "Indien — amazon.in"
+          }
+        },
+        {
+          "id": "EG",
+          "title": {
+            "en": "Egypt — amazon.eg",
+            "sv": "Egypten — amazon.eg"
+          }
+        },
+        {
+          "id": "SA",
+          "title": {
+            "en": "Saudi Arabia — amazon.sa",
+            "sv": "Saudiarabien — amazon.sa"
+          }
+        },
+        {
+          "id": "TR",
+          "title": {
+            "en": "Turkey — amazon.com.tr",
+            "sv": "Turkiet — amazon.com.tr"
+          }
+        },
+        {
+          "id": "AE",
+          "title": {
+            "en": "United Arab Emirates — amazon.ae",
+            "sv": "Förenade Arabemiraten — amazon.ae"
+          }
+        }
+      ]
     }
   ],
   "titleFormatted": {

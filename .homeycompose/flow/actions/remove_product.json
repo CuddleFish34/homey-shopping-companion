@@ -5,19 +5,27 @@
   },
   "args": [
     {
-      "type": "text",
+      "type": "autocomplete",
       "name": "list_id",
       "title": {
-        "en": "List ID",
-        "sv": "List-ID"
+        "en": "Shopping list",
+        "sv": "Inköpslista"
+      },
+      "placeholder": {
+        "en": "Choose a list",
+        "sv": "Välj en lista"
       }
     },
     {
-      "type": "text",
+      "type": "autocomplete",
       "name": "item_id",
       "title": {
-        "en": "Item ID",
-        "sv": "Post-ID"
+        "en": "List item",
+        "sv": "Produkt i listan"
+      },
+      "placeholder": {
+        "en": "Choose an item",
+        "sv": "Välj en produkt"
       }
     }
   ],
