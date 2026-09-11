@@ -1,0 +1,5 @@
+{
+  "0.1.0": {
+    "en": "Initial test release with shopping lists, product price and stock monitoring, parcel events, Homey Flow cards, multi-marketplace support and optional Amazon Creators API integration. Purchases always remain manual."
+  }
+}
