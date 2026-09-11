@@ -21,7 +21,13 @@
   ],
   "permissions": [],
   "brandColor": "#FF9900",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
   "support": "https://apps.creson.com/AmazonCompanion/",
+  "homepage": "https://apps.creson.com/AmazonCompanion/",
   "author": {
     "name": "Mikael Creson",
     "email": "mikael@creson.se"
@@ -87,9 +93,25 @@
       "method": "GET",
       "path": "/v1/products"
     },
+    "searchProducts": {
+      "method": "POST",
+      "path": "/v1/products/search"
+    },
+    "refreshProduct": {
+      "method": "POST",
+      "path": "/v1/products/:id/refresh"
+    },
     "observeProduct": {
       "method": "POST",
       "path": "/v1/products/:id/observation"
+    },
+    "reloadProviders": {
+      "method": "POST",
+      "path": "/v1/providers/reload"
+    },
+    "testAmazonCreators": {
+      "method": "POST",
+      "path": "/v1/providers/amazon-creators/test"
     },
     "getShipments": {
       "method": "GET",

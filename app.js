@@ -4,15 +4,22 @@ const { listMarketplaces } = require('./lib/marketplaces');
 const { CAPABILITIES } = require('./lib/safety');
 const ProviderRegistry = require('./lib/providers/registry');
 const AccountConnectorRegistry = require('./lib/account-connectors/registry');
+const ProductMonitor = require('./lib/monitor');
+const { getMarketplace } = require('./lib/marketplaces');
 
 class AmazonCompanionApp extends Homey.App {
   async onInit() {
     this.store = new Store(this.homey);
     await this.store.init();
-    this.providers = new ProviderRegistry();
+    const creatorsConfig = this.homey.settings.get('amazon_creators_config') || {};
+    this.providers = new ProviderRegistry({ amazonCreators: creatorsConfig });
     this.accountConnectors = new AccountConnectorRegistry();
+    this.monitor = new ProductMonitor(this, {
+      intervalMinutes: creatorsConfig.monitorIntervalMinutes || 60,
+    });
     this._registerFlowCards();
-    this.log('Amazon Companion initialized in read/list-only mode.');
+    this.monitor.start();
+    this.log('Amazon Companion initialized in read/list-monitor mode.');
   }
 
   _registerFlowCards() {
@@ -88,6 +95,17 @@ class AmazonCompanionApp extends Homey.App {
     return this.providers.list();
   }
 
+  reloadProviders() {
+    const creatorsConfig = this.homey.settings.get('amazon_creators_config') || {};
+    this.providers = new ProviderRegistry({ amazonCreators: creatorsConfig });
+    if (this.monitor) {
+      this.monitor.stop();
+      this.monitor.intervalMinutes = Math.max(15, Number(creatorsConfig.monitorIntervalMinutes || 60));
+      this.monitor.start();
+    }
+    return this.getProviders();
+  }
+
   getAccountConnectors() {
     return this.accountConnectors.list();
   }
@@ -142,6 +160,43 @@ class AmazonCompanionApp extends Homey.App {
 
   getProducts() {
     return this.store.getProducts();
+  }
+
+  async searchProducts(input = {}) {
+    const marketCode = String(input.marketplace || this.store.getPreferences().defaultMarketplace || 'SE').toUpperCase();
+    const market = getMarketplace(marketCode);
+    const provider = this.providers.get('amazon-creators');
+    return provider.search({
+      keywords: input.keywords,
+      itemCount: input.itemCount,
+      marketplace: marketCode,
+      marketplaceDomain: market.domain,
+    });
+  }
+
+  async refreshProduct(id) {
+    const product = this.store.getProduct(id);
+    const market = getMarketplace(product.marketplace);
+    const provider = this.providers.get(product.providerId || 'manual');
+    if (provider.id === 'manual') throw new Error('Manual products do not have a live data provider.');
+    const observation = await provider.lookup({
+      ...product,
+      marketplaceDomain: market.domain,
+    });
+    return this.observeProduct(id, observation);
+  }
+
+  async testAmazonCreators(input = {}) {
+    const marketCode = String(input.marketplace || this.store.getPreferences().defaultMarketplace || 'SE').toUpperCase();
+    const market = getMarketplace(marketCode);
+    const provider = this.providers.get('amazon-creators');
+    const result = await provider.search({
+      keywords: 'Amazon Basics',
+      itemCount: 1,
+      marketplace: marketCode,
+      marketplaceDomain: market.domain,
+    });
+    return { ok: true, marketplace: marketCode, resultCount: result.length };
   }
 
   async observeProduct(id, observation) {

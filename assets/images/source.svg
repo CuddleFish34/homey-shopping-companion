@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+  <rect width="1000" height="700" rx="44" fill="#f6f7f9"/>
+  <rect x="90" y="90" width="820" height="520" rx="48" fill="#ffffff" stroke="#e2e5e9" stroke-width="4"/>
+  <g transform="translate(170 165)">
+    <path d="M45 95h250l-28 250H73L45 95Z" fill="#fff4e5" stroke="#232f3e" stroke-width="24" stroke-linejoin="round"/>
+    <path d="M115 118V78c0-44 35-78 78-78s78 34 78 78v40" fill="none" stroke="#232f3e" stroke-width="24" stroke-linecap="round"/>
+    <path d="M120 190h105M120 250h68" fill="none" stroke="#ff9900" stroke-width="22" stroke-linecap="round"/>
+    <circle cx="265" cy="270" r="54" fill="#eaf7ef" stroke="#1f7a4d" stroke-width="12"/>
+    <path d="m238 270 19 20 38-45" fill="none" stroke="#1f7a4d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="520" y="255" font-family="DejaVu Sans, sans-serif" font-size="66" font-weight="700" fill="#232f3e">Amazon</text>
+  <text x="520" y="330" font-family="DejaVu Sans, sans-serif" font-size="66" font-weight="700" fill="#232f3e">Companion</text>
+  <text x="520" y="395" font-family="DejaVu Sans, sans-serif" font-size="28" fill="#5c6673">Shopping lists · price · stock · parcels</text>
+  <text x="520" y="445" font-family="DejaVu Sans, sans-serif" font-size="24" font-weight="700" fill="#1f7a4d">No checkout. Purchases stay manual.</text>
+</svg>

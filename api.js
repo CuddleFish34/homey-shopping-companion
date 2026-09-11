@@ -8,6 +8,12 @@ module.exports = {
   async getProviders({ homey }) {
     return homey.app.getProviders();
   },
+  async reloadProviders({ homey }) {
+    return homey.app.reloadProviders();
+  },
+  async testAmazonCreators({ homey, body }) {
+    return homey.app.testAmazonCreators(body);
+  },
   async getAccountConnectors({ homey }) {
     return homey.app.getAccountConnectors();
   },
@@ -43,6 +49,12 @@ module.exports = {
   },
   async getProducts({ homey }) {
     return homey.app.getProducts();
+  },
+  async searchProducts({ homey, body }) {
+    return homey.app.searchProducts(body);
+  },
+  async refreshProduct({ homey, params }) {
+    return homey.app.refreshProduct(params.id);
   },
   async observeProduct({ homey, params, body }) {
     return homey.app.observeProduct(params.id, body);

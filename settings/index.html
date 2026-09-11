@@ -7,11 +7,11 @@
 <body>
   <header class="homey-header">
     <h1 class="homey-title">Amazon Companion</h1>
-    <p class="homey-subtitle">Shopping lists, price/stock monitoring and parcel events.</p>
+    <p class="homey-subtitle">Shopping lists, product monitoring and parcel events — handled by your own Homey.</p>
   </header>
 
   <fieldset class="homey-form-fieldset">
-    <legend class="homey-form-legend">Marketplace</legend>
+    <legend class="homey-form-legend">1. Choose marketplace</legend>
     <div class="homey-form-group">
       <label class="homey-form-label" for="market">Default Amazon marketplace</label>
       <select id="market" class="homey-form-select">
@@ -24,12 +24,81 @@
         <option value="ES">Spain — amazon.es (EUR)</option>
         <option value="NL">Netherlands — amazon.nl (EUR)</option>
         <option value="PL">Poland — amazon.pl (PLN)</option>
+        <option value="BE">Belgium — amazon.com.be (EUR)</option>
+        <option value="IE">Ireland — amazon.ie (EUR)</option>
+        <option value="CA">Canada — amazon.ca (CAD)</option>
+        <option value="MX">Mexico — amazon.com.mx (MXN)</option>
+        <option value="BR">Brazil — amazon.com.br (BRL)</option>
+        <option value="JP">Japan — amazon.co.jp (JPY)</option>
+        <option value="SG">Singapore — amazon.sg (SGD)</option>
+        <option value="AU">Australia — amazon.com.au (AUD)</option>
+        <option value="IN">India — amazon.in (INR)</option>
+        <option value="EG">Egypt — amazon.eg (EGP)</option>
+        <option value="SA">Saudi Arabia — amazon.sa (SAR)</option>
+        <option value="TR">Turkey — amazon.com.tr (TRY)</option>
+        <option value="AE">United Arab Emirates — amazon.ae (AED)</option>
       </select>
     </div>
+    <p>You can use shopping lists and Homey Flows without any Amazon API account.</p>
   </fieldset>
 
   <fieldset class="homey-form-fieldset">
-    <legend class="homey-form-legend">List cleanup</legend>
+    <legend class="homey-form-legend">2. Optional: Amazon live product data</legend>
+    <label class="homey-form-checkbox">
+      <input id="liveEnabled" type="checkbox">
+      <span>Enable direct price, stock and product lookup from this Homey</span>
+    </label>
+    <p>
+      Optional. To enable live Amazon data, you need your own accepted Amazon Associates account
+      and Creators API credentials for the marketplace you use.
+    </p>
+    <p>
+      <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/onboarding" target="_blank" rel="noreferrer">
+        Open Amazon Creators API setup instructions
+      </a>
+    </p>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="credentialId">Credential ID</label>
+      <input id="credentialId" class="homey-form-input" type="text" autocomplete="off">
+    </div>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="credentialSecret">Credential Secret</label>
+      <input id="credentialSecret" class="homey-form-input" type="password" autocomplete="new-password">
+    </div>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="credentialVersion">Credential version</label>
+      <select id="credentialVersion" class="homey-form-select">
+        <option value="3.2">3.2 — Europe (SE, DE, UK, FR, IT, ES, NL, PL...)</option>
+        <option value="3.1">3.1 — North America (US, CA, MX, BR)</option>
+        <option value="3.3">3.3 — Far East (JP, SG, AU)</option>
+      </select>
+    </div>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="partnerTag">Partner Tag for selected marketplace</label>
+      <input id="partnerTag" class="homey-form-input" type="text" autocomplete="off">
+      <p class="homey-form-help">Partner Tags are marketplace-specific. Switch marketplace above to save another tag.</p>
+    </div>
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="monitorInterval">Check watched products every</label>
+      <select id="monitorInterval" class="homey-form-select">
+        <option value="60">1 hour</option>
+        <option value="120">2 hours</option>
+        <option value="360">6 hours</option>
+        <option value="720">12 hours</option>
+        <option value="1440">24 hours</option>
+      </select>
+    </div>
+    <button id="test" class="homey-button-secondary-full" type="button">Save & test Amazon connection</button>
+    <p id="apiStatus"></p>
+    <p>
+      <strong>Important:</strong> Credential Secret is an API credential, not your Amazon shopping password.
+      Amazon Companion never stores your retail Amazon password or browser session.
+    </p>
+  </fieldset>
+
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend">3. List cleanup</legend>
     <label class="homey-form-checkbox">
       <input id="removeDelivered" type="checkbox">
       <span>Remove linked items when a shipment is delivered</span>
@@ -39,42 +108,106 @@
       <span>Remove linked items as soon as they are marked ordered</span>
     </label>
   </fieldset>
-
   <div class="homey-form-group">
-    <button id="save" class="homey-button-primary-full">Save</button>
+    <button id="save" class="homey-button-primary-full" type="button">Save settings</button>
   </div>
 
-  <p><strong>Security:</strong> Amazon Companion has no order-placement,
-    cart, payment or address capability. Amazon purchases must always be
-    completed manually by the user on Amazon.</p>
+  <p><strong>Security:</strong> Amazon Companion has no order-placement, cart, checkout,
+    payment or address capability. Purchases must always be completed manually on Amazon.</p>
 
   <script>
     function onHomeyReady(Homey) {
       const market = document.getElementById('market');
+      const liveEnabled = document.getElementById('liveEnabled');
+      const credentialId = document.getElementById('credentialId');
+      const credentialSecret = document.getElementById('credentialSecret');
+      const credentialVersion = document.getElementById('credentialVersion');
+      const partnerTag = document.getElementById('partnerTag');
+      const monitorInterval = document.getElementById('monitorInterval');
       const removeDelivered = document.getElementById('removeDelivered');
       const removeOrdered = document.getElementById('removeOrdered');
+      const apiStatus = document.getElementById('apiStatus');
       const save = document.getElementById('save');
+      const test = document.getElementById('test');
+      let creatorsConfig = { partnerTags: {} };
 
-      Homey.get('amazon_companion_state', (error, state) => {
-        if (!error && state && state.preferences) {
-          market.value = state.preferences.defaultMarketplace || 'SE';
-          removeDelivered.checked = state.preferences.autoRemoveOnDelivered !== false;
-          removeOrdered.checked = state.preferences.autoRemoveOnOrdered === true;
-        }
-        Homey.ready();
+      function syncPartnerTag() {
+        partnerTag.value = (creatorsConfig.partnerTags || {})[market.value] || '';
+      }
+
+      Homey.get('amazon_creators_config', (configError, config) => {
+        if (!configError && config) creatorsConfig = { partnerTags: {}, ...config };
+        liveEnabled.checked = creatorsConfig.enabled === true;
+        credentialId.value = creatorsConfig.credentialId || '';
+        credentialSecret.value = creatorsConfig.credentialSecret || '';
+        credentialVersion.value = creatorsConfig.credentialVersion || '3.2';
+        monitorInterval.value = String(creatorsConfig.monitorIntervalMinutes || 60);
+
+        Homey.get('amazon_companion_state', (stateError, state) => {
+          if (!stateError && state && state.preferences) {
+            market.value = state.preferences.defaultMarketplace || 'SE';
+            removeDelivered.checked = state.preferences.autoRemoveOnDelivered !== false;
+            removeOrdered.checked = state.preferences.autoRemoveOnOrdered === true;
+          }
+          syncPartnerTag();
+          Homey.ready();
+        });
       });
 
-      save.addEventListener('click', () => {
+      market.addEventListener('change', syncPartnerTag);
+      function saveAll(callback) {
         Homey.get('amazon_companion_state', (error, state) => {
-          if (error || !state) return Homey.alert('Could not load settings.');
+          if (error || !state) return callback(error || new Error('Could not load settings.'));
           state.preferences = state.preferences || {};
           state.preferences.defaultMarketplace = market.value;
           state.preferences.autoRemoveOnDelivered = removeDelivered.checked;
           state.preferences.autoRemoveOnOrdered = removeOrdered.checked;
-          Homey.set('amazon_companion_state', state, setError => {
-            if (setError) return Homey.alert(setError.message || String(setError));
-            Homey.alert('Saved.');
+
+          creatorsConfig.enabled = liveEnabled.checked;
+          creatorsConfig.credentialId = credentialId.value.trim();
+          creatorsConfig.credentialSecret = credentialSecret.value.trim();
+          creatorsConfig.credentialVersion = credentialVersion.value;
+          creatorsConfig.monitorIntervalMinutes = Number(monitorInterval.value || 60);
+          creatorsConfig.partnerTags = creatorsConfig.partnerTags || {};
+          creatorsConfig.partnerTags[market.value] = partnerTag.value.trim();
+
+          Homey.set('amazon_companion_state', state, stateError => {
+            if (stateError) return callback(stateError);
+            Homey.set('amazon_creators_config', creatorsConfig, configError => {
+              if (configError) return callback(configError);
+              Homey.api('POST', '/v1/providers/reload', {}, callback);
+            });
           });
+        });
+      }
+
+      save.addEventListener('click', () => {
+        save.disabled = true;
+        saveAll(error => {
+          save.disabled = false;
+          if (error) return Homey.alert(error.message || String(error));
+          Homey.alert('Settings saved on this Homey.');
+        });
+      });
+
+      test.addEventListener('click', () => {
+        test.disabled = true;
+        apiStatus.textContent = 'Testing direct connection from Homey to Amazon...';
+        saveAll(error => {
+          if (error) {
+            test.disabled = false;
+            apiStatus.textContent = error.message || String(error);
+            return;
+          }
+          Homey.api('POST', '/v1/providers/amazon-creators/test',
+            { marketplace: market.value }, (testError, result) => {
+              test.disabled = false;
+              if (testError) {
+                apiStatus.textContent = 'Connection failed: ' + (testError.message || String(testError));
+                return;
+              }
+              apiStatus.textContent = 'Connected. Amazon returned ' + result.resultCount + ' test result(s).';
+            });
         });
       });
     }

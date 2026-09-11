@@ -76,6 +76,37 @@ If Amazon later provides an official read-only customer API, it can be added as
 an optional provider with the minimum scopes required. Any purchasing scope will
 remain unsupported by design.
 
+## Setup modes
+
+### Basic mode — no Amazon API account required
+
+Install the app and choose your Amazon marketplace. Shopping lists, manual
+product links, parcel records and Homey Flows are stored and handled entirely
+on the user's own Homey Pro.
+
+### Optional live Amazon product data
+
+For automatic search, current prices and stock status, the user can enable
+Amazon Creators API in the app settings and provide their own:
+
+- Credential ID
+- Credential Secret
+- Credential Version
+- Partner Tag for each marketplace they want to use
+
+Those credentials are stored on that user's Homey and calls go directly from
+that Homey to Amazon. Creson does not provide or operate a proxy/backend for
+product lookups.
+
+Amazon requires an accepted Amazon Associates account and Creators API access.
+Partner Tags are marketplace-specific.
+
+## Hosting model
+
+**No Creson server is required for normal app operation.** Each user's Homey
+is the backend for their shopping lists, product observations and parcel data.
+The public Creson website is documentation only.
+
 ## Website
 
 Public documentation is planned for:
