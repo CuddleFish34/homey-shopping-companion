@@ -7,7 +7,7 @@ const AccountConnectorRegistry = require('./lib/account-connectors/registry');
 const ProductMonitor = require('./lib/monitor');
 const { getMarketplace } = require('./lib/marketplaces');
 
-class AmazonCompanionApp extends Homey.App {
+class ShoppingCompanionApp extends Homey.App {
   async onInit() {
     this.store = new Store(this.homey);
     await this.store.init();
@@ -19,7 +19,7 @@ class AmazonCompanionApp extends Homey.App {
     });
     this._registerFlowCards();
     this.monitor.start();
-    this.log('Amazon Companion initialized in read/list-monitor mode.');
+    this.log('Shopping Companion initialized in read/list-monitor mode.');
   }
 
   _registerFlowCards() {
@@ -57,6 +57,8 @@ class AmazonCompanionApp extends Homey.App {
       .registerRunListener(args => this.updateShipment(args.shipment_id, { status: args.status }));
     this.homey.flow.getActionCard('record_product_observation')
       .registerRunListener(args => this.observeProduct(args.product_id, args));
+    this.homey.flow.getActionCard('check_watched_products')
+      .registerRunListener(() => this.monitor.run());
 
     this.homey.flow.getConditionCard('product_in_stock')
       .registerRunListener(async args => this.store.getProduct(args.product_id).availability === 'in_stock');
@@ -80,7 +82,7 @@ class AmazonCompanionApp extends Homey.App {
   getHealth() {
     return {
       ok: true,
-      app: 'Amazon Companion',
+      app: 'Shopping Companion',
       version: this.manifest.version,
       mode: 'read-list-monitor-only',
       capabilities: CAPABILITIES,
@@ -93,6 +95,10 @@ class AmazonCompanionApp extends Homey.App {
 
   getProviders() {
     return this.providers.list();
+  }
+
+  runMonitor() {
+    return this.monitor.run();
   }
 
   reloadProviders() {
@@ -290,4 +296,4 @@ class AmazonCompanionApp extends Homey.App {
   }
 }
 
-module.exports = AmazonCompanionApp;
+module.exports = ShoppingCompanionApp;

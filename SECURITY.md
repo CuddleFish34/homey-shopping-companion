@@ -1,6 +1,6 @@
 # Security model
 
-Amazon Companion follows a deliberately narrow capability model.
+Shopping Companion follows a deliberately narrow capability model.
 
 ## Never supported
 

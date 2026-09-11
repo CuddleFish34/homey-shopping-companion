@@ -1,6 +1,6 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "com.creson.amazon-companion",
+  "id": "com.creson.shopping-companion",
   "version": "0.1.0",
   "compatibility": ">=12.9.0",
   "sdk": 3,
@@ -9,8 +9,8 @@
     "local"
   ],
   "name": {
-    "en": "Amazon Companion",
-    "sv": "Amazon Companion"
+    "en": "Shopping Companion",
+    "sv": "Shopping Companion"
   },
   "description": {
     "en": "Private shopping lists, product monitoring and parcel events for Amazon marketplaces. Never places orders.",
@@ -26,8 +26,8 @@
     "large": "/assets/images/large.png",
     "xlarge": "/assets/images/xlarge.png"
   },
-  "support": "https://apps.creson.com/AmazonCompanion/",
-  "homepage": "https://apps.creson.com/AmazonCompanion/",
+  "support": "https://apps.creson.com/ShoppingCompanion/",
+  "homepage": "https://apps.creson.com/ShoppingCompanion/",
   "author": {
     "name": "Mikael Creson",
     "email": "mikael@creson.se"
@@ -683,6 +683,17 @@
           "sv": "Lägg till kollinummer [[tracking_number]] · [[carrier]] · [[order_reference]]"
         },
         "id": "add_tracking"
+      },
+      {
+        "title": {
+          "en": "Check watched products now",
+          "sv": "Kontrollera bevakade produkter nu"
+        },
+        "titleFormatted": {
+          "en": "Check watched products now",
+          "sv": "Kontrollera bevakade produkter nu"
+        },
+        "id": "check_watched_products"
       },
       {
         "title": {

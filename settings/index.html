@@ -6,7 +6,7 @@
 </head>
 <body>
   <header class="homey-header">
-    <h1 class="homey-title">Amazon Companion</h1>
+    <h1 class="homey-title">Shopping Companion</h1>
     <p class="homey-subtitle">Shopping lists, product monitoring and parcel events — handled by your own Homey.</p>
   </header>
 
@@ -93,7 +93,7 @@
     <p id="apiStatus"></p>
     <p>
       <strong>Important:</strong> Credential Secret is an API credential, not your Amazon shopping password.
-      Amazon Companion never stores your retail Amazon password or browser session.
+      Shopping Companion never stores your retail Amazon password or browser session.
     </p>
   </fieldset>
 
@@ -112,7 +112,7 @@
     <button id="save" class="homey-button-primary-full" type="button">Save settings</button>
   </div>
 
-  <p><strong>Security:</strong> Amazon Companion has no order-placement, cart, checkout,
+  <p><strong>Security:</strong> Shopping Companion has no order-placement, cart, checkout,
     payment or address capability. Purchases must always be completed manually on Amazon.</p>
 
   <script>
@@ -143,7 +143,7 @@
         credentialVersion.value = creatorsConfig.credentialVersion || '3.2';
         monitorInterval.value = String(creatorsConfig.monitorIntervalMinutes || 60);
 
-        Homey.get('amazon_companion_state', (stateError, state) => {
+        Homey.get('shopping_companion_state', (stateError, state) => {
           if (!stateError && state && state.preferences) {
             market.value = state.preferences.defaultMarketplace || 'SE';
             removeDelivered.checked = state.preferences.autoRemoveOnDelivered !== false;
@@ -156,7 +156,7 @@
 
       market.addEventListener('change', syncPartnerTag);
       function saveAll(callback) {
-        Homey.get('amazon_companion_state', (error, state) => {
+        Homey.get('shopping_companion_state', (error, state) => {
           if (error || !state) return callback(error || new Error('Could not load settings.'));
           state.preferences = state.preferences || {};
           state.preferences.defaultMarketplace = market.value;
@@ -171,7 +171,7 @@
           creatorsConfig.partnerTags = creatorsConfig.partnerTags || {};
           creatorsConfig.partnerTags[market.value] = partnerTag.value.trim();
 
-          Homey.set('amazon_companion_state', state, stateError => {
+          Homey.set('shopping_companion_state', state, stateError => {
             if (stateError) return callback(stateError);
             Homey.set('amazon_creators_config', creatorsConfig, configError => {
               if (configError) return callback(configError);

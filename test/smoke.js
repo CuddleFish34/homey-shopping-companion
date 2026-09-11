@@ -44,7 +44,7 @@ async function main() {
   const accounts = new AccountConnectorRegistry();
   assert.throws(() => accounts.register(new UnsafeConnector()));
 
-  console.log('Amazon Companion smoke tests passed.');
+  console.log('Shopping Companion smoke tests passed.');
 }
 
 main().catch(error => {

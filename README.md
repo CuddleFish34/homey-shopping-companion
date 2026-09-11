@@ -1,8 +1,8 @@
-# Amazon Companion for Homey
+# Shopping Companion for Homey
 
 A Homey Pro app for private shopping lists, Amazon product monitoring and parcel events.
 
-> **Safety by design:** Amazon Companion never places orders, enters checkout,
+> **Safety by design:** Shopping Companion never places orders, enters checkout,
 > modifies payment methods or changes shipping addresses. Purchases are always
 > completed manually by the user on Amazon.
 
@@ -56,7 +56,7 @@ protected MCP / Homey connector
       |
 Athom/Homey API
       |
-Homey Pro — Amazon Companion
+Homey Pro — Shopping Companion
   |       |        |
  lists  products  parcels
       |
@@ -69,7 +69,7 @@ ordering, cart management, checkout, payments or address changes exists.
 ## Amazon account access
 
 Amazon Login currently exposes identity/profile scopes, not a general consumer
-API for wish lists, orders or parcel history. Amazon Companion will therefore
+API for wish lists, orders or parcel history. Shopping Companion will therefore
 never use a captured Amazon browser session as a substitute.
 
 If Amazon later provides an official read-only customer API, it can be added as
@@ -111,7 +111,7 @@ The public Creson website is documentation only.
 
 Public documentation is planned for:
 
-**https://apps.creson.com/AmazonCompanion**
+**https://apps.creson.com/ShoppingCompanion**
 
 The initial static source lives in `website/`.
 

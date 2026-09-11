@@ -1,6 +1,6 @@
 # Amazon account access policy
 
-Amazon Companion is designed to support optional Amazon account connections
+Shopping Companion is designed to support optional Amazon account connections
 only when Amazon provides an official API with sufficiently narrow permissions.
 
 An account connector may be allowed to:
@@ -21,5 +21,5 @@ An account connector must never be allowed to:
 At present, Login with Amazon is not treated as an order/wishlist API. A future
 connector must be implemented only from documented official Amazon capabilities.
 
-If no compliant account API exists for a marketplace, Amazon Companion falls
+If no compliant account API exists for a marketplace, Shopping Companion falls
 back to Homey's own shopping lists plus official/public product-provider data.

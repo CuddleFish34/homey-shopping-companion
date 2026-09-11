@@ -1,13 +1,13 @@
 {
-  "id": "com.creson.amazon-companion",
+  "id": "com.creson.shopping-companion",
   "version": "0.1.0",
   "compatibility": ">=12.9.0",
   "sdk": 3,
   "runtime": "nodejs",
   "platforms": ["local"],
   "name": {
-    "en": "Amazon Companion",
-    "sv": "Amazon Companion"
+    "en": "Shopping Companion",
+    "sv": "Shopping Companion"
   },
   "description": {
     "en": "Private shopping lists, product monitoring and parcel events for Amazon marketplaces. Never places orders.",
@@ -21,8 +21,8 @@
     "large": "/assets/images/large.png",
     "xlarge": "/assets/images/xlarge.png"
   },
-  "support": "https://apps.creson.com/AmazonCompanion/",
-  "homepage": "https://apps.creson.com/AmazonCompanion/",
+  "support": "https://apps.creson.com/ShoppingCompanion/",
+  "homepage": "https://apps.creson.com/ShoppingCompanion/",
   "author": {
     "name": "Mikael Creson",
     "email": "mikael@creson.se"
