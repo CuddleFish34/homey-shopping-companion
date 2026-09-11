@@ -1,6 +1,6 @@
 {
   "name": "com.creson.shopping-companion",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "app.js",
   "private": true,
   "scripts": {

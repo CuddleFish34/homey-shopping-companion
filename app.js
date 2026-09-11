@@ -124,7 +124,11 @@ class ShoppingCompanionApp extends Homey.App {
     ));
 
     this.homey.flow.getActionCard('add_tracking')
-      .registerRunListener(args => this.addShipment(args));
+      .registerRunListener(args => this.addShipment({
+        trackingNumber: args.tracking_number,
+        carrier: args.carrier,
+        orderReference: args.order_reference,
+      }));
 
     const setShipmentStatusCard = this.homey.flow.getActionCard('set_shipment_status');
     setShipmentStatusCard.registerArgumentAutocompleteListener('shipment_id', async query => this._shipmentAutocomplete(query));

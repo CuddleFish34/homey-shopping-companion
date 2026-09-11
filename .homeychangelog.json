@@ -5,5 +5,9 @@
   "0.1.1": {
     "en": "Improved Flow usability with list, product and shipment pickers instead of raw IDs.",
     "sv": "Förbättrad Flow-användning med väljare för listor, produkter och kollin i stället för råa ID:n."
+  },
+  "0.1.2": {
+    "en": "Improved Flow selectors and fixed parcel tracking Flow actions.",
+    "sv": "Förbättrade Flow-väljare och rättade Flow-kort för kollispårning."
   }
 }

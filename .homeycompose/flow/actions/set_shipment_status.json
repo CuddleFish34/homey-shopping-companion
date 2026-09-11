@@ -17,12 +17,49 @@
       }
     },
     {
-      "type": "text",
+      "type": "dropdown",
       "name": "status",
       "title": {
         "en": "Status",
         "sv": "Status"
-      }
+      },
+      "values": [
+        {
+          "id": "registered",
+          "title": {
+            "en": "Registered",
+            "sv": "Registrerad"
+          }
+        },
+        {
+          "id": "in_transit",
+          "title": {
+            "en": "In transit",
+            "sv": "På väg"
+          }
+        },
+        {
+          "id": "out_for_delivery",
+          "title": {
+            "en": "Out for delivery",
+            "sv": "Ute för leverans"
+          }
+        },
+        {
+          "id": "delivered",
+          "title": {
+            "en": "Delivered",
+            "sv": "Levererad"
+          }
+        },
+        {
+          "id": "exception",
+          "title": {
+            "en": "Exception / problem",
+            "sv": "Problem / avvikelse"
+          }
+        }
+      ]
     }
   ],
   "titleFormatted": {

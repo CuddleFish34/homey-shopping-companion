@@ -34,12 +34,49 @@
       }
     },
     {
-      "type": "text",
+      "type": "dropdown",
       "name": "availability",
       "title": {
         "en": "Availability",
         "sv": "Lagertillstånd"
-      }
+      },
+      "values": [
+        {
+          "id": "unknown",
+          "title": {
+            "en": "Unknown",
+            "sv": "Okänd"
+          }
+        },
+        {
+          "id": "in_stock",
+          "title": {
+            "en": "In stock",
+            "sv": "I lager"
+          }
+        },
+        {
+          "id": "out_of_stock",
+          "title": {
+            "en": "Out of stock",
+            "sv": "Slut i lager"
+          }
+        },
+        {
+          "id": "preorder",
+          "title": {
+            "en": "Pre-order",
+            "sv": "Förbeställning"
+          }
+        },
+        {
+          "id": "unavailable",
+          "title": {
+            "en": "Unavailable",
+            "sv": "Otillgänglig"
+          }
+        }
+      ]
     }
   ],
   "titleFormatted": {
